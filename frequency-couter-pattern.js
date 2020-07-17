@@ -19,12 +19,11 @@ function same(arr1, arr2) {
 }
 
 
-// let ab = same([1, 2, 3], [1, 4, 9]);
-// console.log(ab)
+let ab = same([1, 2, 3], [1, 4, 9]);
+
 
 
 // Frequency Couter Approach
-
 function same2(arr1, arr2) {
     let obj1 = {}
     let obj2 = {};
@@ -62,8 +61,6 @@ function same2(arr1, arr2) {
 
 // let x = same2([1, 2, 3], [1, 4, 9])
 
-// console.log(x)
-
 
 //anagram
 function anagram(str1, str2) {
@@ -89,4 +86,28 @@ function anagram(str1, str2) {
 
 let y = anagram("aza", "zaa");
 
-console.log(y)
+
+// anagram with couter pointer 
+function couterAnagram(first, second) {
+    if (first.length !== second.length) {
+        return false;
+    }
+    let lookup = {}
+
+    for (let i = 0; i < first.length; i++) {
+        let letter = first[i];
+        lookup[letter] ? lookup[letter] += 1 : lookup[letter] = 1;
+    }
+
+
+    for (let i = 0; i < second.length; i++) {
+        let letter = second[i];
+        if (!lookup[letter]) {
+            return false;
+        }
+        lookup[letter] -= 1;
+    }
+    return true;
+}
+
+let z = couterAnagram("aza", "zaa");
